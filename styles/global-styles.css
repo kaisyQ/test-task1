@@ -1,0 +1,29 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+input, select {
+    border: 0;
+    outline: none;
+    text-align: center;
+}
+
+button {
+    border: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+body{ 
+    background:  #DDEDFF;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh;
+}
