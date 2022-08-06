@@ -14,19 +14,21 @@ const Header = ( { from, to } : IPath) => {
         <header className={css(styles)}>
             <div className={css({ display: 'flex', alignItems: 'center'})}>
                 <Image src={logo} alt="logo" />
-                <span className={
-                    css({
-                            marginLeft: '60px',
-                            fontFamily: `'Roboto', sans-serif`,
-                            fontWeight: '500',
-                            fontSize: '17px',
-                            lineHeight: '17px',
-                            letterSpacing: '0.2px',
-                            color: '#606F7A'
-                        })
-                }>
-                    Пекин &rarr; Москва
-                </span>
+                {   from && to ? <span className={
+                        css({
+                                marginLeft: '60px',
+                                fontFamily: `'Roboto', sans-serif`,
+                                fontWeight: '500',
+                                fontSize: '17px',
+                                lineHeight: '17px',
+                                letterSpacing: '0.2px',
+                                color: '#606F7A'
+                            })
+                    }>
+                        {from} &rarr; {to}
+                    </span>
+                    : null
+                }
             </div>
             <button className={
                         css({
