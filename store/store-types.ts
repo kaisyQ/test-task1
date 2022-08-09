@@ -3,3 +3,8 @@ export interface ICalcObj {
     to: string,
     currency: string
 }
+
+export interface ICurrencyType {
+    name: string,
+    value: string
+}

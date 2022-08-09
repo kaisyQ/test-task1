@@ -1,6 +1,6 @@
 .deliveryBlock {
     display: flex;
-    align-items:center;
+    align-items: flex-end;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
@@ -9,6 +9,7 @@
 }
 
 .deliveryGroup span {
+    margin-bottom: 16px;
     color: #B7B7B7;
 }
 
@@ -21,29 +22,37 @@
     border-radius: 3px;
 }
 
-.liContainer ul:not(:last-child)::after {
-    content: '';
-    display: block;
-    height: 50px;
-    width: 1px;
-    background-color: #DEDEDE;
-
-    position: absolute;
-    right: 0px;
-    top: 10px;
-}
-
-.liContainer {
-    margin-top: 16px;
-    background-color: #fff;
-    max-width: 135px;
-    min-height: 67px;
+.deliveryGroupItem {
+    display: flex;
+    flex-direction: column;
     position: relative;
 }
 
-.liContainer ul li {
-    max-width: 135px;
+
+.deliveryLink {
+    display: block;
     padding: 26px 32px;
+    max-width: 140px;
+    min-width: 110px;
+    background-color: #ffffff;
+    position: relative;
+    cursor: pointer;    
+    text-align: center;
+}
+
+.deliveryGroupItem:not(:last-child)::after {
+    content: '';
+    width: 1px;
+    height: 47px;
+    background-color: black;
+
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+}
+
+.hasSubgroup {
+    padding-right: 55px;
 }
 
 .arrow {
@@ -53,9 +62,30 @@
     border-right: 1px #000 solid;
     position: absolute;
     top: 50%;
-    right: 1px;
+    right: 30px;
     transform: translateY(-100%) rotate(135deg);
 }
+
+.deliverySubgroup {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+}
+
+.deliverySubgroup > li {
+    border-top: 1px solid #DEDEDE;
+}
+
+.deliverySubgroup > li:hover a {
+    background-color: #DEDEDE;
+}
+
+.deliveryGroupItem:hover .deliveryLink {
+    display: block;
+
+}
+
 
 .show {
     display: block;
@@ -71,12 +101,36 @@
     height: 55px;
     left: 97px;
     top: 543px;
+    padding: 20px;
+    background-color: #fff;
+    color: #5DAAFF;
+    letter-spacing: 0.2px;
+    text-align: center;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 15px;
+    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.1);
+    border-radius: 3px;
 }
 
 .helpWhenClick {
     position: absolute;
     width: 350px;
     height: 55px;
-    left: 446px;
-    top: 381px;
+    left: 400px;
+    top: 390px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    color: #5DAAFF;
+    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.1);
+    border-radius: 3px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 15px;
 }

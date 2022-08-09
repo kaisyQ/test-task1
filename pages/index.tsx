@@ -1,51 +1,39 @@
 import type { NextPage } from 'next'
-import { useState } from 'react'
+import { useReducer, useState } from 'react'
 import { css } from '@emotion/css'
-
 import styles from './index.module.css'
+import indexReducer, { initialState, setCityToAC, setInptVlAC, setVltAC } from './index-reducer'
+import { ICurrencyType } from '../store/store-types'
 
-const Home: NextPage = () => {
+const Home: NextPage = (props: any) => {
 
-  const [isCityShw, setIsCityShw] = useState(false)
-  const [isVltShw, setIsVltShw] = useState(false)
-  const [inptCtVl, setInptCtVl] = useState('')
+  console.log(props.store.cities[0])
+  const [state, dispatch] = useReducer(indexReducer, initialState)
+  const [isHovered, setIsHovered] = useState(false)
 
-  let cityShwClassName = ''
-  let vltShwClassName = ''
-  let isShwHlpMessClassName = ''
-  let isShwHlpWhenClickMessClassName = ''
-  
-  if (!inptCtVl) {
-    isShwHlpMessClassName += styles.show
-    isShwHlpWhenClickMessClassName += styles.hide
-  } else {
-    isShwHlpMessClassName += styles.hide
-    isShwHlpWhenClickMessClassName += styles.show
+
+  let btnHintClass = styles.hide
+  let inptHintClass = styles.hide
+
+  if (state.tmpInputValue !== '') { btnHintClass = styles.show }
+  else { inptHintClass = styles.show }
+
+  if (isHovered) {
+    inptHintClass = styles.hide
+    btnHintClass = styles.hide
   }
 
-  if (isCityShw) {
-    cityShwClassName += styles.show
-  } else {
-    cityShwClassName += styles.hide
-  }
+  const onInptChange = (ev: any) : void => { dispatch(setInptVlAC(ev.target.value)) }
 
-  if (isVltShw) {
-    vltShwClassName += styles.show
-  } else {
-    vltShwClassName += styles.hide
-  }
+  const onLiCityClick = (ev: any) : void => { dispatch(setCityToAC(ev.target.innerText)) }
+  const onLiVltClick = (ev: any) : void => { dispatch(setVltAC(ev.target.innerText)) }
+  const onThenBtnClick = (ev: any) : void => { console.log(state) }
 
-  const onCityClck = (e: any) => {
-    setIsCityShw(!isCityShw)
-  }
 
-  const onVltClck = (e :any) => {
-    setIsVltShw(!isVltShw)
-  }
-
-  const inptCtVlChange = (e: any) => {
-    setInptCtVl(e.target.value)
-  }
+  const onSelectMouseUp = (ev: any) : void => { setIsHovered(true) }
+  const onSelectMouseLeave = (ev: any) : void => { setIsHovered(false) }
+  const onInptFocus = (ev: any) : void => { setIsHovered(true) }
+  const onBInptBlur = (ev: any) : void => { setIsHovered(false) }
 
   return <div className='content'>
     <h1 className={css({
@@ -60,57 +48,63 @@ const Home: NextPage = () => {
     </h1>
     <div className={styles.deliveryBlock}>
       <div className={styles.deliveryGroupContainer}>
-        <ul className={styles.deliveryGroup}>
-          <li>
+        <ul className={styles.deliveryGroup} >
+          <li className={styles.deliveryGroupItem}>
             <span>Откуда</span>
-            <div className={styles.liContainer}>
-              <ul className={styles.deliverySubgroup}>
-                <li>
-                  <input onChange={inptCtVlChange} value={inptCtVl}/>
-                </li>
-              </ul>
-            </div>
+            <a className={styles.deliveryLink}>
+                <input value={state.tmpInputValue} onBlur={onBInptBlur} onFocus={onInptFocus} onChange={onInptChange}/>
+            </a>
+            <ul className={styles.deliverySubgroup}>
+            {
+              props.store.chineseCities.map((city: string) => {
+                return state.tmpInputValue !== '' && city.includes(state.tmpInputValue) ? <li><a className={styles.deliveryLink}>{city}</a></li> : null
+              })
+            }
+            </ul>
           </li>
-          <li className={styles.deliveryWr}>
+          <li className={styles.deliveryGroupItem} onMouseLeave={onSelectMouseLeave} onMouseEnter={onSelectMouseUp} onClick={onLiCityClick}>
             <span className={styles.span}>Куда</span>
-            <div className={styles.liContainer}>
-              <ul className={styles.deliverySubgroup}>
-                <li className={styles.show}>Москва</li>
-                <li className={cityShwClassName}>Владивосток</li>
-              </ul>
-              <div className={styles.arrow} onClick={onCityClck}></div>
-            </div>
+            <a className={`${styles.deliveryLink} ${styles.hasSubgroup}`}>
+              { state.cityTo }
+              <div className={styles.arrow} ></div>
+            </a>
+            <ul className={styles.deliverySubgroup}>
+            {
+              props.store.cities.map((city: string) => {
+                return state.cityTo !== city ? <li key={city}><a className={`${styles.deliveryLink} ${styles.hide}`}>{city}</a></li> : null
+              })
+            }
+            </ul>
           </li>
-          <li className={styles.deliveryVlt}>
+          <li className={styles.deliveryGroupItem} onMouseLeave={onSelectMouseLeave} onMouseEnter={onSelectMouseUp} onClick={onLiVltClick}>
             <span className={styles.span}>Валюта</span>
-            <div className={styles.liContainer}>
+              <a className={`${styles.deliveryLink} ${styles.hasSubgroup}`}>
+                { state.vltValue }
+                <div className={styles.arrow}></div>
+              </a>
               <ul className={styles.deliverySubgroup}>
-                <li className={styles.show}>USD</li>
-                <li className={vltShwClassName}>RUB</li>
+              {
+                props.store.currencies.map((currency: ICurrencyType) =>{ 
+                  return state.vltValue !== currency.name ? <li><a className={`${styles.deliveryLink} ${styles.hide}`}>{currency.name}</a></li> : null
+                })
+              }
               </ul>
-              <div className={styles.arrow} onClick={onVltClck}></div>
-            </div>
           </li>
-          <li>
+          <li className={styles.deliveryGroupItem}>
             <span>Курс</span>
-            <div className={styles.liContainer}>
-              <ul className={styles.deliverySubgroup}>
-                <li>
-                  <div>64.54</div>
-                </li>
-              </ul>
-            </div>
+            {
+              props.store.currencies.map((currency: ICurrencyType) =>{ 
+                return state.vltValue === currency.name ?  <a key={currency.name} className={styles.deliveryLink}>{currency.value}</a> : null
+              })
+            }
           </li>
         </ul>
       </div>
-      <button className="btn">Далее &rarr;</button>
+      <button className="btn" onClick={onThenBtnClick}>Далее &rarr;</button>
     </div>
 
-    <div className={`${styles.helpWrt} ${isShwHlpMessClassName}`}>
-      Для начала заполните поля выше
-    </div>
-
-    <div className={`${styles.helpWhenClick} ${isShwHlpWhenClickMessClassName}`}>Теперь нажмите на кнопку “Далее”</div>
+    <div className={`${styles.helpWrt} ${inptHintClass}`}>Для начала заполните поля выше 	&uarr;</div>
+    <div className={`${styles.helpWhenClick} ${btnHintClass}`}>Теперь нажмите на кнопку “Далее” 	&darr;</div>
   </div>
 }
 
