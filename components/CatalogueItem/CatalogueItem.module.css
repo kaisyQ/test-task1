@@ -1,0 +1,20 @@
+.catalogueItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    color: #606F7A;
+    background-color: #F8FAFF;
+    text-align: center;
+    border: 1px solid #E2E4EA;  
+    border-radius: 3px;
+}
+
+.catalogueItem:not(:last-child) {
+    margin-bottom: 4px;
+}
+
+.productImage {
+    border-right: 1px solid #E2E4EA;
+}

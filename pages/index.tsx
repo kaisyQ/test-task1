@@ -27,6 +27,7 @@ const Home: NextPage = (props: any) => {
 
   const onLiCityClick = (ev: any) : void => { dispatch(setCityToAC(ev.target.innerText)) }
   const onLiVltClick = (ev: any) : void => { dispatch(setVltAC(ev.target.innerText)) }
+  const onLiChineseCityClick = (ev: any) : void => { dispatch(setInptVlAC(ev.target.innerText)) }
   const onThenBtnClick = (ev: any) : void => { 
     props.store.calcObj = { from: state.tmpInputValue, to: state.cityTo, currency: state.vltValue } 
   }
@@ -56,10 +57,11 @@ const Home: NextPage = (props: any) => {
             <a className={styles.deliveryLink}>
                 <input value={state.tmpInputValue} onBlur={onBInptBlur} onFocus={onInptFocus} onChange={onInptChange}/>
             </a>
-            <ul className={styles.deliverySubgroup}>
+            <ul onClick={onLiChineseCityClick} className={styles.deliverySubgroup}>
             {
               props.store.chineseCities.map((city: string) => {
-                return state.tmpInputValue !== '' && city.includes(state.tmpInputValue) ? <li key={city}><a className={styles.deliveryLink}>{city}</a></li> : null
+                return state.tmpInputValue !== '' && city.includes(state.tmpInputValue) && state.tmpInputValue !== city ? 
+                <li key={city}><a className={styles.deliveryLink}>{city}</a></li> : null
               })
             }
             </ul>
@@ -102,7 +104,7 @@ const Home: NextPage = (props: any) => {
           </li>
         </ul>
       </div>
-      <Link href='contact'><button className="btn" onClick={onThenBtnClick}><a>Далее &rarr;</a></button></Link>
+      <Link href='products'><button className="btn" onClick={onThenBtnClick}><a>Далее &rarr;</a></button></Link>
     </div>
 
     <div className={`${styles.helpWrt} ${inptHintClass}`}>Для начала заполните поля выше 	&uarr;</div>

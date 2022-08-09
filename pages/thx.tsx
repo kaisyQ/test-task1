@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { css } from '@emotion/css'
+import Link from "next/link"
 const ThxPage: NextPage = () => {
-
     
     return <>
         <div className={css({ marginTop: '220px' })}>
@@ -28,7 +28,7 @@ const ThxPage: NextPage = () => {
                     Мы свяжемся с вами в ближайшее время.
                 </h2>
             </div>
-            <button className="btn">Вернуться к контактам &rarr;</button>
+            <Link href='contact'><button className="btn">Вернуться к контактам &rarr;</button></Link>
     </>
 }
 

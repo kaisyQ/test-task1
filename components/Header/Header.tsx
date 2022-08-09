@@ -4,12 +4,13 @@ import Image from 'next/image'
 
 interface IPath {
     from?: string,
-    to?: string
+    to?: string,
+    currency?: string
 }
 
 import logo from './../../public/img/logo.png'
 
-const Header = ( { from, to } : IPath) => {
+const Header = ( { from, to, currency } : IPath) => {
     return <>
         <header className={css(styles)}>
             <div className={css({ display: 'flex', alignItems: 'center'})}>
@@ -25,7 +26,7 @@ const Header = ( { from, to } : IPath) => {
                                 color: '#606F7A'
                             })
                     }>
-                        {from} &rarr; {to}
+                        {from} &rarr; {to}, {currency}
                     </span>
                     : null
                 }
