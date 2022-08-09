@@ -1,3 +1,4 @@
+import { throws } from "assert"
 import { makeObservable, observable, action, computed } from "mobx"
 
 import { ICalcObj, ICurrencyType } from "./store-types"
@@ -21,6 +22,8 @@ class Store {
 
     _currencies: ICurrencyType[] = [{ name: 'USD', value: '64.54'}, {name: 'RUB', value: '1'}, {name: 'CNY', value: '8.98'}]
 
+    _problems: string[] = []
+
     get cities () { return this._cities }
 
     get calcObj () : ICalcObj | null { return this._calcObj }
@@ -28,6 +31,15 @@ class Store {
     get currencies () { return this._currencies }
 
     get chineseCities () { return this._chineseCities }
+
+    get problems () { return this._problems }
+
+    set calcObj(calcObj : ICalcObj | null) { this._calcObj = calcObj }
+
+    addProblem (newProblem: string) {
+        this._problems.push(newProblem)
+    }
+
 
 }
 

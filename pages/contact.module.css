@@ -1,0 +1,137 @@
+.contactTitle {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 64px;
+    letter-spacing: -1px;
+    color: #606F7A;
+    margin-bottom: 70px;
+}
+
+.contactData {
+    display: flex;
+    justify-content: space-between;
+
+}
+.contactDataContainer {
+    width: 550px;
+}
+
+.contactDataTitle {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 36px;
+    letter-spacing: -1px;
+    color: #606F7A;
+    margin-bottom: 50px;
+}
+
+.schNtwItems {
+    display: flex;
+    align-items: center;
+}
+.contactItems {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #606F7A;
+    margin-bottom: 30px;
+}
+
+.schNtwItem {
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+    margin-bottom: 40px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #606F7A;
+
+}
+
+.schNtwItem > label {
+    margin-left: 30px;
+}
+
+.contactBtn {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.contactInpts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contactInpts input {
+    width: 250px;
+    padding: 20px;
+    margin: 0 10px 10px 0;
+}
+
+.queryContainer h4 {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 17px;
+    letter-spacing: 0.2px;
+    color: #606F7A;
+    margin-bottom: 20px;
+}
+
+.queryContainer textarea {
+    min-width: 500px;
+    min-height: 125px;
+    margin-bottom: 20px;
+}
+
+.contactComment {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 25px;
+    letter-spacing: 0.2px;
+    color: #B7B7B7;
+}
+   
+.contactComment span{
+    color: #606F7A;
+}
+
+.errorBorder {
+    border: 2px solid rgba(255, 93, 93, 0.8);
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.06);
+    border-radius: 3px;
+}
+
+.errorMessage {
+    position: absolute;
+    width: 203px;
+    height: 15px;
+    left: 1150px;
+    top: 470px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #FF5D5D;
+}

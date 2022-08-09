@@ -4,10 +4,10 @@ import { css } from '@emotion/css'
 import styles from './index.module.css'
 import indexReducer, { initialState, setCityToAC, setInptVlAC, setVltAC } from './index-reducer'
 import { ICurrencyType } from '../store/store-types'
+import Link from 'next/link'
 
 const Home: NextPage = (props: any) => {
 
-  console.log(props.store.cities[0])
   const [state, dispatch] = useReducer(indexReducer, initialState)
   const [isHovered, setIsHovered] = useState(false)
 
@@ -27,7 +27,9 @@ const Home: NextPage = (props: any) => {
 
   const onLiCityClick = (ev: any) : void => { dispatch(setCityToAC(ev.target.innerText)) }
   const onLiVltClick = (ev: any) : void => { dispatch(setVltAC(ev.target.innerText)) }
-  const onThenBtnClick = (ev: any) : void => { console.log(state) }
+  const onThenBtnClick = (ev: any) : void => { 
+    props.store.calcObj = { from: state.tmpInputValue, to: state.cityTo, currency: state.vltValue } 
+  }
 
 
   const onSelectMouseUp = (ev: any) : void => { setIsHovered(true) }
@@ -57,7 +59,7 @@ const Home: NextPage = (props: any) => {
             <ul className={styles.deliverySubgroup}>
             {
               props.store.chineseCities.map((city: string) => {
-                return state.tmpInputValue !== '' && city.includes(state.tmpInputValue) ? <li><a className={styles.deliveryLink}>{city}</a></li> : null
+                return state.tmpInputValue !== '' && city.includes(state.tmpInputValue) ? <li key={city}><a className={styles.deliveryLink}>{city}</a></li> : null
               })
             }
             </ul>
@@ -85,7 +87,7 @@ const Home: NextPage = (props: any) => {
               <ul className={styles.deliverySubgroup}>
               {
                 props.store.currencies.map((currency: ICurrencyType) =>{ 
-                  return state.vltValue !== currency.name ? <li><a className={`${styles.deliveryLink} ${styles.hide}`}>{currency.name}</a></li> : null
+                  return state.vltValue !== currency.name ? <li key={currency.name}><a className={`${styles.deliveryLink} ${styles.hide}`}>{currency.name}</a></li> : null
                 })
               }
               </ul>
@@ -100,7 +102,7 @@ const Home: NextPage = (props: any) => {
           </li>
         </ul>
       </div>
-      <button className="btn" onClick={onThenBtnClick}>Далее &rarr;</button>
+      <Link href='contact'><button className="btn" onClick={onThenBtnClick}><a>Далее &rarr;</a></button></Link>
     </div>
 
     <div className={`${styles.helpWrt} ${inptHintClass}`}>Для начала заполните поля выше 	&uarr;</div>
