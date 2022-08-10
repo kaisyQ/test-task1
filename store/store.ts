@@ -24,6 +24,18 @@ class Store {
 
     _problems: string[] = []
 
+    _items: string[] = [
+        'Диван-кровать, раскладывается',
+        'Диван-кровать, раскладывается',
+        'Диван-кровать, раскладывается',
+        'Диван-кровать, раскладывается',
+        'Диван-кровать, раскладывается',
+        'Диван-кровать, раскладывается',
+        'Телевизор из Тайваня'
+    ]
+
+    _selectedItems: string[] = []
+
     get cities () { return this._cities }
 
     get calcObj () : ICalcObj | null { return this._calcObj }
@@ -34,13 +46,17 @@ class Store {
 
     get problems () { return this._problems }
 
+    get items () { return this._items }
+
+    get selecteditems () { return this._selectedItems }
+
     set calcObj(calcObj : ICalcObj | null) { this._calcObj = calcObj }
 
-    addProblem (newProblem: string) {
-        this._problems.push(newProblem)
-    }
+    addProblem (newProblem: string) : void { this._problems.push(newProblem) }
 
+    addSelectedItem(newItem: string) : void { this._selectedItems.push(newItem) }
 
+    isItemArrEmpty () : boolean { return this._selectedItems.length === 0}
 }
 
 export default Store

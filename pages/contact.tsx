@@ -8,7 +8,7 @@ import whatsappImg from './../public/img/whatsapp.svg'
 import { useReducer, useState } from "react";
 import { useRouter } from 'next/router'
 import { contactReducer, initalState, setEmailInptAC, setNameInptAC, setPhoneInptAC, setProblemTaAC } from "./contact-reducers"
-
+import { observer } from 'mobx-react-lite'
 const ContactPage: NextPage = (props: any) => {
     const [state, dispatch] = useReducer(contactReducer, initalState)
     const [resultErrMess, setResultErrMess] = useState('')
@@ -102,4 +102,4 @@ const ContactPage: NextPage = (props: any) => {
     </div>
 }
 
-export default ContactPage
+export default observer(ContactPage)

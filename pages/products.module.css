@@ -18,6 +18,17 @@
     color: #606F7A;
 }
 
+.productSubtitle {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 23px;
+    letter-spacing: -1px;
+    color: #606F7A;
+    margin-top: 210px;
+    text-align: center;
+}
 .catalogue {
     max-height: 428px;
     overflow-y: scroll;
@@ -31,7 +42,7 @@
 
 .productsSearch input {
     padding: 19px;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -79,8 +90,38 @@
 
 .formGroup {
     display: flex;
+    align-items: center;
     max-width: 320px;
     margin-bottom: 15px;
+    margin-top: 24px;
+}
+
+.formGroup span {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 15px;
+    letter-spacing: 0.2px;
+    color: #606F7A;
+    margin-right: 35px;
+}
+
+.countSelectorItem {
+    background-color: #fff;
+    text-align: center;
+    width: 53px;
+    height: 53px;
+}
+
+.countSelectorCounter {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 53px;
+    letter-spacing: 0.2px;
+    color: #606F7A;
 }
 
 .formControl {
@@ -96,4 +137,51 @@
 
 .formFooter {
     margin-top: 36px;
+}
+
+.btnForm:first-child {
+    margin-right: 9px;
+}
+
+.pathItemHint {
+    position: absolute;
+    display: flex;
+    width: 800px;
+    height: 55px;
+    left: 22%;
+    top: 15%;
+    padding: 20px 40px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.1);
+    border-radius: 3px; 
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 15px;
+    letter-spacing: 0.2px;
+    color: #5DAAFF;
+ 
+}
+.pathItemHint button{
+    background: #fff;
+    cursor: pointer;
+}
+
+.SearchHint {
+    position: absolute;
+    width: 600px;
+    height: 100px;
+    left: 47%;
+    top: 42%;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 23px;
+    letter-spacing: 0.2px;
+    color: #5DAAFF;
+    padding: 25px;
+    background-color: #fff;
 }

@@ -18,3 +18,12 @@
 .productImage {
     border-right: 1px solid #E2E4EA;
 }
+
+.withNoBtn {
+    max-width: 430px;
+    justify-content: unset;
+}
+
+.withNoBtnProductName {
+    padding: 0 20px;
+}
