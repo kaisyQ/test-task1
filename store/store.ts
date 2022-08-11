@@ -1,7 +1,7 @@
 import { throws } from "assert"
 import { makeObservable, observable, action, computed } from "mobx"
 
-import { ICalcObj, ICurrencyType } from "./store-types"
+import { ICalcObj, ICurrencyType, ISelectedItem } from "./store-types"
 
 class Store {
 
@@ -34,7 +34,7 @@ class Store {
         'Телевизор из Тайваня'
     ]
 
-    _selectedItems: string[] = []
+    _selectedItems: ISelectedItem[] = []
 
     get cities () { return this._cities }
 
@@ -54,7 +54,7 @@ class Store {
 
     addProblem (newProblem: string) : void { this._problems.push(newProblem) }
 
-    addSelectedItem(newItem: string) : void { this._selectedItems.push(newItem) }
+    addSelectedItem(newItem: ISelectedItem) : void { this._selectedItems.push(newItem) }
 
     isItemArrEmpty () : boolean { return this._selectedItems.length === 0}
 }

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import { observer } from "mobx-react-lite"
 import { css } from '@emotion/css'
 import styles from './header-styles'
@@ -13,13 +14,15 @@ interface IPath {
 import logo from './../../public/img/logo.png'
 
 const Header = ( { from, to, currency } : IPath) => {
+    const router = useRouter()
+    console.log(router.route)
     return <>
         <header className={css(styles)}>
             <div className={css({ display: 'flex', alignItems: 'center'})}>
                 <Link href='/'>
                     <Image src={logo} alt="logo" className={css({cursor: 'pointer'})}/>
                 </Link>
-                {   from && to ? <span className={
+                {   router.route === '/products' && from && to && currency ? <span className={
                         css({
                                 marginLeft: '60px',
                                 fontFamily: `'Roboto', sans-serif`,
@@ -34,18 +37,14 @@ const Header = ( { from, to, currency } : IPath) => {
                     </span>
                     : null
                 }
+                {
+                    router.route === '/calculation' && from && to && currency ?
+                        <span>Добавленая мебель(1)</span> :
+                        null
+                }
             </div>
             <Link href='contact'>
-                <button className={
-                            css({
-                            width: '132px',
-                            backgroundColor: '#fff',
-                            fontFamily: `'Open Sans', sans-serif`,
-                            fontWeight: '600',
-                            borderRadius: '3px',
-                            boxShadow: '0px 4px 40px rgba(46, 80, 87, 0.12)',
-                            cursor: 'pointer'
-                })}>
+                <button className={`btn btnHeader`}>
                     Связаться
                 </button>
             </Link>

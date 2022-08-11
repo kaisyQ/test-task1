@@ -8,3 +8,11 @@ export interface ICurrencyType {
     name: string,
     value: string
 }
+
+export interface ISelectedItem {
+    itemName: string,
+    totlVlmInptVl: number,
+    totlBruttoVl: number,
+    totlNettoVl: number,
+    oneItemVl: number
+}

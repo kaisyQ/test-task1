@@ -7,7 +7,7 @@ import Image from "next/image";
 import plusImage from './../public/img/plus.png'
 import minusImage from './../public/img/minus.png'
 import xImage from './../public/img/x.png'
-import productReducer, { initalState, setOneItemInptVlAC, setSearchInptVlAC, setTotlBruttoVlAC, setTotlNettoVlAC, setTotlVlmInptVlAC } from "./product-reducer";
+import productReducer, { initalState, setOneItemInptVlAC, setSearchInptVlAC, setSelectedItem, setTotlBruttoVlAC, setTotlNettoVlAC, setTotlVlmInptVlAC, unsetSelectedItem } from "./product-reducer";
 
 const ProductsPage: NextPage = (props: any) => {
 
@@ -35,8 +35,23 @@ const ProductsPage: NextPage = (props: any) => {
     const onSeactInptFocus = (ev: any) : void => { setIsItemSelected(true) }
     
     const onSelectItemClick = (itemName: string) : void => {
-        props.store.addSelectedItem(itemName)
+        dispatch(setSelectedItem( { itemName } ))
         setIsItemSelected(true) 
+    }
+
+    const onThrowBtnClick = (ev: any) : void => {
+        dispatch(unsetSelectedItem())
+        setIsItemSelected(false)
+    }
+
+    const onAddItemClick = (ev: any) : void => {
+        props.store.addSelectedItem({
+            ...state.selectedItem,
+            totlVlmInptVl: state.totlBruttoVl,
+            totlBruttoVl: state.totlBruttoVl,
+            totlNettoVl: state.totlNettoVl,
+            oneItemVl: state.oneItemInptVl
+        })
     }
 
     const onHidePathHint = (ev: any) : void => { setIsWantedToRemoveHint(value => !value) }
@@ -61,11 +76,11 @@ const ProductsPage: NextPage = (props: any) => {
         <div className={styles.productsItem}>
             <h2 className={styles.productsTitle}>Затем заполните следующие поля выбранного элемента:</h2>
             {
-                props.store.isItemArrEmpty() ? <div className={styles.productSubtitle}>
+                !state.selectedItem ? <div className={styles.productSubtitle}>
                     Вы не выбрали пока ни одного элемента.
                 </div> : 
                 <>
-                    <CatalogueItem isChosen={true} name="Диван-кровать, раскладывается"/>
+                    <CatalogueItem isChosen={true} name={state.selectedItem.itemName}/>
                     <form className={styles.productsForm}>
                         <div className={styles.formGroup}>
                             <span>Кол-во:</span>
@@ -92,8 +107,8 @@ const ProductsPage: NextPage = (props: any) => {
                             <input onChange={onOneItemInptChange} value={state.oneItemInptVl} placeholder="Стоимость одной единицы" type="text" className={styles.formControl}/>
                         </div>
                         <div className={styles.formFooter}>
-                            <button className={`btn ${styles.btnForm}`}>Сбросить</button>
-                            <button className={`btn ${styles.btnForm}`}>Добавить</button>
+                            <button onClick={onThrowBtnClick} className={`btn ${styles.btnForm}`}>Сбросить</button>
+                            <button onClick={onAddItemClick} className={`btn ${styles.btnForm}`}>Добавить</button>
                         </div>
                     </form>
                 </>

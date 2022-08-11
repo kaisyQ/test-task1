@@ -31,6 +31,7 @@ ul {
 
 body{ 
     background:  #DDEDFF;
+    color: #606f7a;
 }
 
 .wrapper {
@@ -56,4 +57,10 @@ body{
 .btn-product {
     padding: 14px 30px;
     margin-right: 25px;
+}
+
+.btnHeader {
+    padding: 14px 22px;
+    background-color: #fff;
+    color: inherit;
 }
