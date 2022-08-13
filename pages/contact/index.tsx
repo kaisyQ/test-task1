@@ -7,7 +7,7 @@ import wechatImg from '../../public/img/wechat.svg'
 import whatsappImg from '../../public/img/whatsapp.svg'
 import { useReducer, useState, useEffect } from "react";
 import { useRouter } from 'next/router'
-import { contactReducer, initalState, setEmailInptAC, setNameInptAC, setPhoneInptAC, setProblemTaAC } from "../calculation/contact-reducers"
+import { contactReducer, initalState, setEmailInptAC, setNameInptAC, setPhoneInptAC, setProblemTaAC } from "./contact-reducers"
 import { observer } from 'mobx-react-lite'
 const ContactPage: NextPage = (props: any) => {
 
@@ -90,6 +90,7 @@ const ContactPage: NextPage = (props: any) => {
                     <input onChange={onNameInptChange} value={state.name} placeholder="Имя и фамилия" />
                     <input onChange={onEmailInptChange} value={state.email} placeholder="Почта" />
                     <input onChange={onPhoneInptChange} value={state.phone} placeholder="Телефон" />
+                    { resultErrMess === '' ? null : <div className={styles.errorMessage}>{resultErrMess}</div> }
                 </div>
                 <div className={styles.queryContainer}>
                     <h4>Опишите ваш запрос</h4>
@@ -99,7 +100,6 @@ const ContactPage: NextPage = (props: any) => {
                 </div>
             </div>
         </div>
-        { resultErrMess === '' ? null : <div className={styles.errorMessage}>{resultErrMess}</div> }
     </div>
 }
 

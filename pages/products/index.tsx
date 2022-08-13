@@ -68,6 +68,12 @@ const ProductsPage: NextPage = (props: any) => {
             <div className={styles.productsSearch}>
                 <input onFocus={onSeactInptFocus} onChange={onSearchInptChange} value={state.searchInptVl} type="text" placeholder="Введите название"/>
                 <button className="btn">Поиск</button>
+                {
+                    isItemSelected ? null : <div className={styles.SearchHint}>
+                        <span>&larr;</span>
+                        <p>Введите название мебели в строку поиска<br />или выберите мебель из предложенного списка</p>
+                    </div>
+                }
             </div>
             <div className={styles.catalogue}>
                 {
@@ -120,18 +126,6 @@ const ProductsPage: NextPage = (props: any) => {
                 </>
             }
         </div>
-        {
-            !isWantedToRemoveHint ? 
-            <div className={styles.pathItemHint}>
-                <span>&uarr; Теперь ваши параметры выведены сверху, нажмите на них, чтобы  внести изменения</span>
-                <button onClick={onHidePathHint}><Image src={xImage} /></button>
-            </div> : null
-        }
-        {
-            isItemSelected ? null : <div className={styles.SearchHint}>
-                &larr;Введите название мебели в строку поиска или выберите мебель из предложенного списка
-            </div>
-        }
     </div>
 }
 

@@ -1,6 +1,7 @@
 .products {
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 .productsItem {
@@ -9,9 +10,7 @@
 
 .productsTitle {
     margin-bottom: 40px;
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
+    font: inherit;
     font-size: 36px;
     line-height: 48px;
     letter-spacing: -1px;
@@ -19,9 +18,7 @@
 }
 
 .productSubtitle {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
+    font: inherit;
     font-size: 23px;
     line-height: 23px;
     letter-spacing: -1px;
@@ -31,10 +28,12 @@
 }
 .catalogue {
     max-height: 428px;
+    overflow-x: hidden;
     overflow-y: scroll;
 }
 
 .productsSearch {
+    position: relative;
     display: flex;
     max-width: 495px;
     margin-bottom: 80px;
@@ -42,13 +41,10 @@
 
 .productsSearch input {
     padding: 19px;
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: 400;
+    font: inherit;
     font-size: 15px;
     text-align: left;
     line-height: 15px;
-    letter-spacing: 0.2px;
     color: #B7B7B7;
     box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.06);   
     border-radius: 3px;
@@ -66,10 +62,9 @@
 .countSelector {
     display: flex;
 }
+
 .countSelector button {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
+    font: inherit;
     font-size: 15px;
     line-height: 15px;
     text-align: center;
@@ -78,9 +73,7 @@
 }
 
 .formControl span {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
+    font: inherit;
     font-size: 15px;
     line-height: 15px;
     text-align: center;
@@ -97,12 +90,9 @@
 }
 
 .formGroup span {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
+    font: inherit;
     font-size: 15px;
     line-height: 15px;
-    letter-spacing: 0.2px;
     color: #606F7A;
     margin-right: 35px;
 }
@@ -115,12 +105,9 @@
 }
 
 .countSelectorCounter {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
+    font: inherit;
     font-size: 15px;
     line-height: 53px;
-    letter-spacing: 0.2px;
     color: #606F7A;
 }
 
@@ -143,45 +130,23 @@
     margin-right: 9px;
 }
 
-.pathItemHint {
-    position: absolute;
-    display: flex;
-    width: 800px;
-    height: 55px;
-    left: 22%;
-    top: 15%;
-    padding: 20px 40px;
-    background: #FFFFFF;
-    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.1);
-    border-radius: 3px; 
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    text-align: center;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 15px;
-    letter-spacing: 0.2px;
-    color: #5DAAFF;
- 
-}
-.pathItemHint button{
-    background: #fff;
-    cursor: pointer;
-}
-
 .SearchHint {
+    display: flex;
+    align-items: center;
     position: absolute;
-    width: 600px;
-    height: 100px;
-    left: 47%;
-    top: 42%;
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
+    right: -100%;
+    top: 50%;
+    transform: translateY(-50%);
+    font: inherit;
     font-weight: 600;
     font-size: 15px;
     line-height: 23px;
-    letter-spacing: 0.2px;
     color: #5DAAFF;
-    padding: 25px;
+    padding: 20px 20px 20px 25px;
     background-color: #fff;
+    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.1);
+    border-radius: 3px;
+}
+.SearchHint span {
+    margin-right: 20px;
 }

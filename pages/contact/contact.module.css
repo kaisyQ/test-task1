@@ -1,7 +1,5 @@
 .contactTitle {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
+    font: inherit;
     font-size: 64px;
     line-height: 64px;
     letter-spacing: -1px;
@@ -19,9 +17,7 @@
 }
 
 .contactDataTitle {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
+    font: inherit;
     font-size: 36px;
     line-height: 36px;
     letter-spacing: -1px;
@@ -36,15 +32,14 @@
 .contactItems {
     display: flex;
     justify-content: space-between;
-    font-family: 'Roboto';
-    font-style: normal;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 23px;
     line-height: 23px;
     text-align: center;
-    letter-spacing: 0.2px;
     color: #606F7A;
     margin-bottom: 30px;
+    max-width: 340px;
 }
 
 .schNtwItem {
@@ -52,13 +47,11 @@
     align-items: center;
     margin-right: 80px;
     margin-bottom: 40px;
-    font-family: 'Roboto';
-    font-style: normal;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 23px;
     text-align: center;
-    letter-spacing: 0.2px;
     color: #606F7A;
 
 }
@@ -75,21 +68,24 @@
 .contactInpts {
     display: flex;
     flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 50px;
 }
 
 .contactInpts input {
+    text-align: left;
     width: 250px;
     padding: 20px;
     margin: 0 10px 10px 0;
+    color: #B7B7B7;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.06);
+    border-radius: 3px;
 }
 
 .queryContainer h4 {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
+    font: inherit;
     font-size: 17px;
     line-height: 17px;
-    letter-spacing: 0.2px;
     color: #606F7A;
     margin-bottom: 20px;
 }
@@ -101,16 +97,14 @@
 }
 
 .contactComment {
-    font-family: 'Open Sans';
-    font-style: normal;
+    font: inherit;
     font-weight: 600;
     font-size: 17px;
     line-height: 25px;
-    letter-spacing: 0.2px;
     color: #B7B7B7;
 }
    
-.contactComment span{
+.contactComment span {
     color: #606F7A;
 }
 
@@ -124,14 +118,11 @@
     position: absolute;
     width: 203px;
     height: 15px;
-    left: 1150px;
-    top: 470px;
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
+    left: 0;
+    bottom: -15px;
+    font: inherit;
     font-size: 15px;
     line-height: 15px;
-    text-align: center;
-    letter-spacing: 0.2px;
+    text-align: left;
     color: #FF5D5D;
 }
