@@ -1,15 +1,16 @@
 import { NextPage } from "next";
 import Image from 'next/image'
 import styles from './contact.module.css'
-import facebookImg from './../public/img/facebook.svg'
-import instagramImg from './../public/img/instagram.svg'
-import wechatImg from './../public/img/wechat.svg'
-import whatsappImg from './../public/img/whatsapp.svg'
-import { useReducer, useState } from "react";
+import facebookImg from '../../public/img/facebook.svg'
+import instagramImg from '../../public/img/instagram.svg'
+import wechatImg from '../../public/img/wechat.svg'
+import whatsappImg from '../../public/img/whatsapp.svg'
+import { useReducer, useState, useEffect } from "react";
 import { useRouter } from 'next/router'
-import { contactReducer, initalState, setEmailInptAC, setNameInptAC, setPhoneInptAC, setProblemTaAC } from "./contact-reducers"
+import { contactReducer, initalState, setEmailInptAC, setNameInptAC, setPhoneInptAC, setProblemTaAC } from "../calculation/contact-reducers"
 import { observer } from 'mobx-react-lite'
 const ContactPage: NextPage = (props: any) => {
+
     const [state, dispatch] = useReducer(contactReducer, initalState)
     const [resultErrMess, setResultErrMess] = useState('')
     const router = useRouter()

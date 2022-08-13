@@ -1,12 +1,13 @@
 import { NextPage } from "next";
 import styles from './products.module.css'
 import { observer } from "mobx-react-lite";
-import CatalogueItem from "../components/CatalogueItem/CatalogueItem";
+import CatalogueItem from "../../components/CatalogueItem/CatalogueItem";
 import { useState, useReducer } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
-import plusImage from './../public/img/plus.png'
-import minusImage from './../public/img/minus.png'
-import xImage from './../public/img/x.png'
+import plusImage from '../../public/img/plus.png'
+import minusImage from '../../public/img/minus.png'
+import xImage from '../../public/img/x.png'
 import productReducer, { initalState, setOneItemInptVlAC, setSearchInptVlAC, setSelectedItem, setTotlBruttoVlAC, setTotlNettoVlAC, setTotlVlmInptVlAC, unsetSelectedItem } from "./product-reducer";
 
 const ProductsPage: NextPage = (props: any) => {
@@ -15,6 +16,8 @@ const ProductsPage: NextPage = (props: any) => {
     const [isItemSelected, setIsItemSelected] = useState(false)
     const [isWantedToRemoveHint, setIsWantedToRemoveHint] = useState(false)
     const [state, dispatch] = useReducer(productReducer, initalState)
+
+    const router = useRouter()
 
     const onIncrement = (ev: any) : void => { 
         ev.preventDefault()
@@ -40,18 +43,21 @@ const ProductsPage: NextPage = (props: any) => {
     }
 
     const onThrowBtnClick = (ev: any) : void => {
+        ev.preventDefault()
         dispatch(unsetSelectedItem())
         setIsItemSelected(false)
     }
-
     const onAddItemClick = (ev: any) : void => {
+        ev.preventDefault()
         props.store.addSelectedItem({
             ...state.selectedItem,
-            totlVlmInptVl: state.totlBruttoVl,
-            totlBruttoVl: state.totlBruttoVl,
-            totlNettoVl: state.totlNettoVl,
-            oneItemVl: state.oneItemInptVl
+            totlVlmInptVl: parseFloat(state.totlBruttoVl),
+            totlBruttoVl: parseFloat(state.totlBruttoVl),
+            totlNettoVl: parseFloat(state.totlNettoVl),
+            oneItemVl: parseFloat(state.oneItemInptVl),
+            count: counter
         })
+        router.push('calculation')
     }
 
     const onHidePathHint = (ev: any) : void => { setIsWantedToRemoveHint(value => !value) }
@@ -66,15 +72,15 @@ const ProductsPage: NextPage = (props: any) => {
             <div className={styles.catalogue}>
                 {
                     state.searchInptVl === '' ? props.store.items.map(
-                        (item: string) => <CatalogueItem btnClick={onSelectItemClick} isChosen={false} name={item}/>)
+                        (item: string) => <CatalogueItem key={item} btnClick={onSelectItemClick} isChosen={false} name={item}/>)
                     : props.store.items.filter((item: string) => item.includes(state.searchInptVl)).map(
-                        (item: string) => <CatalogueItem btnClick={onSelectItemClick} isChosen={false} name={item}/>)
+                        (item: string) => <CatalogueItem key={item} btnClick={onSelectItemClick} isChosen={false} name={item}/>)
 
                 }
             </div>
         </div>
         <div className={styles.productsItem}>
-            <h2 className={styles.productsTitle}>Затем заполните следующие поля выбранного элемента:</h2>
+            <h2 className={styles.productsTitle}>Затем заполните следующие<br /> поля выбранного элемента:</h2>
             {
                 !state.selectedItem ? <div className={styles.productSubtitle}>
                     Вы не выбрали пока ни одного элемента.

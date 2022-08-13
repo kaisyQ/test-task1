@@ -14,5 +14,6 @@ export interface ISelectedItem {
     totlVlmInptVl: number,
     totlBruttoVl: number,
     totlNettoVl: number,
-    oneItemVl: number
+    oneItemVl: number,
+    count: number
 }

@@ -4,8 +4,6 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    font-size: 15px;
-    line-height: 15px;
 }
 
 .deliveryGroup span {
@@ -15,6 +13,7 @@
 
 .deliveryGroupContainer {
     margin-right: 12px;
+    position: relative;
 }
 
 .deliveryGroup {
@@ -28,23 +27,25 @@
     position: relative;
 }
 
+.cityLink {
+    min-width: 142px;
+    max-width: 180px;
+}
 
 .deliveryLink {
     display: block;
     padding: 26px 32px;
-    max-width: 140px;
-    min-width: 110px;
     background-color: #ffffff;
     position: relative;
     cursor: pointer;    
-    text-align: center;
+    text-align: left;
 }
 
 .deliveryGroupItem:not(:last-child)::after {
     content: '';
     width: 1px;
     height: 47px;
-    background-color: black;
+    background-color: #DEDEDE;
 
     position: absolute;
     right: 0;
@@ -71,9 +72,10 @@
     left: 0;
     top: 100%;
     width: 100%;
+    z-index: 2;
 }
 
-.deliverySubgroup > li {
+.deliverySubgroup:hover > li a {
     border-top: 1px solid #DEDEDE;
 }
 
@@ -83,9 +85,14 @@
 
 .deliveryGroupItem:hover .deliveryLink {
     display: block;
-
 }
 
+.deliveryLink input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    max-height: 15px;
+    color: inherit;
+}
 
 .show {
     display: block;
@@ -99,18 +106,15 @@
     position: absolute;
     width: 329px;
     height: 55px;
-    left: 10%;
-    top: 70%;
+    left: 0;
+    top: 150px;
     padding: 20px;
     background-color: #fff;
     color: #5DAAFF;
     letter-spacing: 0.2px;
+    font: inherit;
     text-align: center;
-    font-family: 'Open Sans';
-    font-style: normal;
     font-weight: 600;
-    font-size: 15px;
-    line-height: 15px;
     box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.1);
     border-radius: 3px;
 }
@@ -119,18 +123,16 @@
     position: absolute;
     width: 350px;
     height: 55px;
-    left: 30%;
-    top: 45%;
+    left: 320px;
+    top: -40px;
     padding: 20px;
     background-color: #FFFFFF;
     color: #5DAAFF;
     box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.1);
     border-radius: 3px;
+    font: inherit;
     text-align: center;
     letter-spacing: 0.2px;
-    font-family: 'Open Sans';
-    font-style: normal;
     font-weight: 600;
-    font-size: 15px;
-    line-height: 15px;
+    z-index: 5;
 }

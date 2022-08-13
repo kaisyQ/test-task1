@@ -1,5 +1,4 @@
-import { throws } from "assert"
-import { makeObservable, observable, action, computed } from "mobx"
+import { makeObservable, observable, computed } from "mobx"
 
 import { ICalcObj, ICurrencyType, ISelectedItem } from "./store-types"
 
@@ -9,8 +8,18 @@ class Store {
         makeObservable(this, {
             _calcObj: observable,
             _cities: observable,
+            _selectedItems: observable,
+            _savedCalculations: observable,
+            _chineseCities: observable,
+            _currencies: observable,
+            _items: observable,
             cities: computed,
             calcObj: computed,
+            currencies: computed,
+            chineseCities: computed,
+            problems: computed,
+            items: computed,
+            selectedItems: computed,
         })
     }
 
@@ -36,6 +45,8 @@ class Store {
 
     _selectedItems: ISelectedItem[] = []
 
+    _savedCalculations: number[] = []
+
     get cities () { return this._cities }
 
     get calcObj () : ICalcObj | null { return this._calcObj }
@@ -48,15 +59,37 @@ class Store {
 
     get items () { return this._items }
 
-    get selecteditems () { return this._selectedItems }
+    get selectedItems () { return this._selectedItems }
 
     set calcObj(calcObj : ICalcObj | null) { this._calcObj = calcObj }
+
+    clearSelectedItems() { this._selectedItems = [] }
 
     addProblem (newProblem: string) : void { this._problems.push(newProblem) }
 
     addSelectedItem(newItem: ISelectedItem) : void { this._selectedItems.push(newItem) }
 
-    isItemArrEmpty () : boolean { return this._selectedItems.length === 0}
+    getTotalSelectVls () { 
+        const totalSelectVls = {
+            totlVlmtVl: 0,
+            totlBruttoVl: 0,
+            totlNettoVl: 0,
+            oneItemVl: 0,
+            count: 0
+        }
+        this._selectedItems.map((item : ISelectedItem) => {
+            totalSelectVls.totlBruttoVl += item.totlBruttoVl
+            totalSelectVls.count += item.count
+            totalSelectVls.oneItemVl += item.oneItemVl
+            totalSelectVls.totlNettoVl += item.totlNettoVl
+            totalSelectVls.totlVlmtVl += item.totlVlmInptVl
+        })
+        return totalSelectVls
+    }
+
+    isItemArrEmpty () : boolean { return this._selectedItems.length === 0 }
+
+    addCalculation (newCalc : number) : void { this._savedCalculations.push(newCalc) }
 }
 
 export default Store

@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import { NextPage } from "next";
 import { css } from '@emotion/css'
 import Link from "next/link"
 const ThxPage: NextPage = () => {
-    
+    useEffect(() => {
+        document.body.style.backgroundImage = 'none'
+      }, [])
     return <>
         <div className={css({ marginTop: '220px' })}>
                 <h1 className={css({

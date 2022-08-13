@@ -8,6 +8,7 @@
 input {
     width: 100%;
     padding: 0;
+    line-height: 1;
 }
 
 input, select {
@@ -29,9 +30,19 @@ ul {
     padding: 0;
 }
 
-body{ 
-    background:  #DDEDFF;
+html {
+    font-family: 'Open Sans', sans-serif;
     color: #606f7a;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: 0.2px;
+}
+
+body { 
+    background:  #DDEDFF;
+    background-repeat: no-repeat;
+    background-position: right bottom;
 }
 
 .wrapper {
