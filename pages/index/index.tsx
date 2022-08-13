@@ -28,8 +28,8 @@ const Home: NextPage = (props: any) => {
   const onLiCityClick = (ev: any) : void => { dispatch(setCityToAC(ev.target.innerText)) }
   const onLiVltClick = (ev: any) : void => { dispatch(setVltAC(ev.target.innerText)) }
   const onLiChineseCityClick = (ev: any) : void => { dispatch(setInptVlAC(ev.target.innerText)) }
-  const onThenBtnClick = (ev: any) : void => { 
-    props.store.calcObj = { from: state.tmpInputValue, to: state.cityTo, currency: state.vltValue } 
+  const onThenBtnClick = (ev: any) : void => {
+    props.store.calcObj = { from: state.tmpInputValue, to: state.cityTo, currency: state.vltValue }
   }
 
 
@@ -51,8 +51,7 @@ const Home: NextPage = (props: any) => {
     </h1>
     <div className={styles.deliveryBlock}>
       <div className={styles.deliveryGroupContainer}>
-        <div className={`${styles.helpWrt} ${inptHintClass}`}>Для начала заполните поля выше 	&uarr;</div>
-        <div className={`${styles.helpWhenClick} ${btnHintClass}`}>Теперь нажмите на кнопку “Далее” 	&darr;</div>
+        <div className={`tip ${styles.helpWrt}  ${inptHintClass}`}>Для начала заполните поля выше <span className={`pointer`}>&uarr;</span></div>
         <ul className={styles.deliveryGroup} >
           <li className={styles.deliveryGroupItem}>
             <span>Откуда</span>
@@ -62,7 +61,7 @@ const Home: NextPage = (props: any) => {
             <ul onClick={onLiChineseCityClick} className={styles.deliverySubgroup}>
             {
               props.store.chineseCities.map((city: string) => {
-                return state.tmpInputValue !== '' && city.includes(state.tmpInputValue) && state.tmpInputValue !== city ? 
+                return state.tmpInputValue !== '' && city.includes(state.tmpInputValue) && state.tmpInputValue !== city ?
                 <li key={city}><a className={styles.deliveryLink}>{city}</a></li> : null
               })
             }
@@ -90,7 +89,7 @@ const Home: NextPage = (props: any) => {
               </a>
               <ul className={styles.deliverySubgroup}>
               {
-                props.store.currencies.map((currency: ICurrencyType) =>{ 
+                props.store.currencies.map((currency: ICurrencyType) =>{
                   return state.vltValue !== currency.name ? <li key={currency.name}><a className={`${styles.deliveryLink} ${styles.hide}`}>{currency.name}</a></li> : null
                 })
               }
@@ -99,14 +98,24 @@ const Home: NextPage = (props: any) => {
           <li className={styles.deliveryGroupItem}>
             <span>Курс</span>
             {
-              props.store.currencies.map((currency: ICurrencyType) =>{ 
-                return state.vltValue === currency.name ?  <a key={currency.name} className={styles.deliveryLink}>{currency.value}</a> : null
+              props.store.currencies.map((currency: ICurrencyType) =>{
+                return state.vltValue === currency.name ?  <a key={currency.name} className={styles.deliveryLink}>{currency.value} руб.</a> : null
               })
             }
           </li>
         </ul>
       </div>
-      <Link href='products'><button className="btn" onClick={onThenBtnClick}><a>Далее &rarr;</a></button></Link>
+      <Link href='products'>
+        <button className="btn" onClick={onThenBtnClick}>
+          <a>
+            Далее
+            <span className={`pointer`}>&rarr;</span>
+          </a>
+          <div className={`tip ${styles.helpWhenClick} ${btnHintClass}`}>
+            Теперь нажмите на кнопку “Далее”
+            <span className={`pointer`}>&darr;</span></div>
+        </button>
+      </Link>
     </div>
   </div>
 }

@@ -7,8 +7,9 @@
     color: #606F7A;
     background-color: #F8FAFF;
     text-align: center;
-    border: 1px solid #E2E4EA;  
+    border: 1px solid #E2E4EA;
     border-radius: 3px;
+    letter-spacing: -1px;
 }
 
 .catalogueItem:not(:last-child) {
@@ -16,6 +17,7 @@
 }
 
 .productImage {
+    height: 97px;
     border-right: 1px solid #E2E4EA;
 }
 

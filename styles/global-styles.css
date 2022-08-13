@@ -5,23 +5,35 @@
     margin: 0;
 }
 
+thead, tbody, tfoot, table, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 input {
     width: 100%;
     padding: 0;
     line-height: 1;
+    letter-spacing: 0.2px;
 }
 
 input, select {
-    border: 0;
+    border: none;
     outline: none;
     text-align: center;
+}
+
+input::placeholder{
+    color: #b7b7b7;
+    letter-spacing: 0.2px;
 }
 
 button {
     border: 0;
 }
 textarea {
-    border: 0;
+    border: none;
     outline: 0;
     resize: none;
 }
@@ -39,14 +51,16 @@ html {
     letter-spacing: 0.2px;
 }
 
-body { 
-    background:  #DDEDFF;
+body {
+    background:  #EFF3F9;
     background-repeat: no-repeat;
     background-position: right bottom;
 }
 
 .wrapper {
-    max-width: 1250px;
+    max-width: 1300px;
+    padding: 0 25px;
+
     margin: 0 auto;
     height: 100vh;
 }
@@ -63,6 +77,8 @@ body {
 
     box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.29);
     border-radius: 3px;
+
+    position: relative;
 }
 
 .btn-product {
@@ -70,8 +86,61 @@ body {
     margin-right: 25px;
 }
 
+.btn-pointer {
+    padding-right: 35;
+}
+
 .btnHeader {
     padding: 14px 22px;
     background-color: #fff;
     color: inherit;
+
+    box-shadow: 0px 4px 40px rgba(46, 80, 87, 0.12);
+}
+
+.tip {
+    width: max-content;
+
+    padding: 20px 25px;
+    background-color: #fff;
+    color: #5DAAFF;
+    letter-spacing: 0.2px;
+    font: inherit;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.1);
+    border-radius: 3px;
+}
+
+.pointer {
+    display: inline-block;
+    padding: 0 15px;
+
+    transform: translateY(-3px) scale(1.8);
+}
+
+.btn > .pointer {
+    padding-right: 0;
+}
+
+/* Scrollbar */
+
+.scrollbar {
+    padding-right: 4px;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 100%;
+
+    margin-left: 3px;
+
+    background: rgba(140, 140, 140, 0.15);
+    border-radius: 2px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background: #BDCBE0;
+    border-radius: 2px
 }

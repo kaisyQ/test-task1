@@ -7,7 +7,7 @@ const store = new Store()
 const Layout = ( { children } : any) => {
     return <div className="wrapper">
         <Header from={store.calcObj?.from} to={store.calcObj?.to} currency={store.calcObj?.currency}/>
-        <main>{ React.cloneElement(children, { store: store }) }</main>
+        <main className={`main`}>{ React.cloneElement(children, { store: store }) }</main>
     </div>
 }
 

@@ -20,7 +20,7 @@ const Header = ( { from, to, currency } : IPath) => {
 
     const router = useRouter()
     const [isWantedToRemoveHint, setIsWantedToRemoveHint] = useState(false)
-    
+
     const onHidePathHint = (ev: any) : void => { setIsWantedToRemoveHint(value => !value) }
 
     return <>
@@ -30,9 +30,9 @@ const Header = ( { from, to, currency } : IPath) => {
                     <div className={mdStyles.headerImg}>
                         <Image src={logo} alt="logo" className={css({cursor: 'pointer'})}/>
                         {
-                            router.route === '/products' && !isWantedToRemoveHint ? 
-                            <div className={mdStyles.pathItemHint}>
-                                <span>&uarr; Теперь ваши параметры выведены сверху, нажмите на них, чтобы  внести изменения</span>
+                            router.route === '/products' && !isWantedToRemoveHint ?
+                            <div className={`tip ${mdStyles.pathItemHint}`}>
+                                <span className={`pointer`}>&uarr;</span> Теперь ваши параметры выведены сверху, нажмите на них, чтобы  внести изменения
                                 <button onClick={onHidePathHint}><Image src={xImage} /></button>
                             </div> : null
                         }

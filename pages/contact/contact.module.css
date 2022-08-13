@@ -73,11 +73,13 @@
 }
 
 .contactInpts input {
+    font: inherit;
+    font-size: 15px;
     text-align: left;
     width: 250px;
-    padding: 20px;
+    padding: 19px;
     margin: 0 10px 10px 0;
-    color: #B7B7B7;
+    color: #606F7A;
     box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.06);
     border-radius: 3px;
 }
@@ -103,7 +105,7 @@
     line-height: 25px;
     color: #B7B7B7;
 }
-   
+
 .contactComment span {
     color: #606F7A;
 }

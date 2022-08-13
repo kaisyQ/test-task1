@@ -19,27 +19,27 @@ const ProductsPage: NextPage = (props: any) => {
 
     const router = useRouter()
 
-    const onIncrement = (ev: any) : void => { 
+    const onIncrement = (ev: any) : void => {
         ev.preventDefault()
-        setCounter(counter => counter + 1) 
+        setCounter(counter => counter + 1)
     }
-    const onDecrement = (ev: any) : void => { 
+    const onDecrement = (ev: any) : void => {
         ev.preventDefault()
         if (counter > 1) {
             setCounter(counter => counter - 1)
-        } 
+        }
     }
     const onOneItemInptChange = (ev: any) : void => { dispatch(setOneItemInptVlAC(ev.target.value)) }
     const onVolumeInptChange = (ev: any) : void => { dispatch(setTotlVlmInptVlAC(ev.target.value)) }
     const onBrtInptChange = (ev: any) : void => { dispatch(setTotlBruttoVlAC(ev.target.value)) }
     const onNettoInptChange = (ev: any) : void => { dispatch(setTotlNettoVlAC(ev.target.value)) }
 
-    const onSearchInptChange = (ev: any) : void => { dispatch(setSearchInptVlAC(ev.target.value)) } 
+    const onSearchInptChange = (ev: any) : void => { dispatch(setSearchInptVlAC(ev.target.value)) }
     const onSeactInptFocus = (ev: any) : void => { setIsItemSelected(true) }
-    
+
     const onSelectItemClick = (itemName: string) : void => {
         dispatch(setSelectedItem( { itemName } ))
-        setIsItemSelected(true) 
+        setIsItemSelected(true)
     }
 
     const onThrowBtnClick = (ev: any) : void => {
@@ -69,13 +69,13 @@ const ProductsPage: NextPage = (props: any) => {
                 <input onFocus={onSeactInptFocus} onChange={onSearchInptChange} value={state.searchInptVl} type="text" placeholder="Введите название"/>
                 <button className="btn">Поиск</button>
                 {
-                    isItemSelected ? null : <div className={styles.SearchHint}>
-                        <span>&larr;</span>
-                        <p>Введите название мебели в строку поиска<br />или выберите мебель из предложенного списка</p>
+                    isItemSelected ? null : <div className={`tip ${styles.SearchHint}`}>
+                        <span className={`pointer`}>&larr;</span>
+                        Введите название мебели в строку поиска или<br />выберите мебель из предложенного списка
                     </div>
                 }
             </div>
-            <div className={styles.catalogue}>
+            <div className={`scrollbar ${styles.catalogue}`}>
                 {
                     state.searchInptVl === '' ? props.store.items.map(
                         (item: string) => <CatalogueItem key={item} btnClick={onSelectItemClick} isChosen={false} name={item}/>)
@@ -90,7 +90,7 @@ const ProductsPage: NextPage = (props: any) => {
             {
                 !state.selectedItem ? <div className={styles.productSubtitle}>
                     Вы не выбрали пока ни одного элемента.
-                </div> : 
+                </div> :
                 <>
                     <CatalogueItem isChosen={true} name={state.selectedItem.itemName}/>
                     <form className={styles.productsForm}>

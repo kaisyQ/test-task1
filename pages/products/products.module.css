@@ -5,7 +5,7 @@
 }
 
 .productsItem {
-    max-width: 600px;
+    max-width: 630px;
 }
 
 .productsTitle {
@@ -27,16 +27,18 @@
     text-align: center;
 }
 .catalogue {
-    max-height: 428px;
+    max-height: 408px;
     overflow-x: hidden;
     overflow-y: scroll;
+
+    scroll-snap-type: x mandatory;
 }
 
 .productsSearch {
     position: relative;
     display: flex;
     max-width: 495px;
-    margin-bottom: 80px;
+    margin-bottom: 58px;
 }
 
 .productsSearch input {
@@ -44,9 +46,8 @@
     font: inherit;
     font-size: 15px;
     text-align: left;
-    line-height: 15px;
-    color: #B7B7B7;
-    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.06);   
+    color: #606F7A;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.06);
     border-radius: 3px;
     margin-right: 10px;
 }
@@ -133,20 +134,12 @@
 .SearchHint {
     display: flex;
     align-items: center;
+
+    padding-left: 10px;
+    line-height: 23px;
+
     position: absolute;
-    right: -100%;
+    left: calc(100% + 48px);
     top: 50%;
     transform: translateY(-50%);
-    font: inherit;
-    font-weight: 600;
-    font-size: 15px;
-    line-height: 23px;
-    color: #5DAAFF;
-    padding: 20px 20px 20px 25px;
-    background-color: #fff;
-    box-shadow: 0px 4px 40px rgba(93, 170, 255, 0.1);
-    border-radius: 3px;
-}
-.SearchHint span {
-    margin-right: 20px;
 }

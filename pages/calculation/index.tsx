@@ -24,7 +24,7 @@ const CalculationPage: NextPage = (props: any) => {
         router.push('/')
     }
     return <div className={styles.addedFurniture}>
-        <div className={styles.tableScroll}>
+        <div className={`scrollbar ${styles.tableScroll}`}>
             <table className={styles.furnitureTable}>
                 <thead>
                     <tr>
@@ -40,8 +40,8 @@ const CalculationPage: NextPage = (props: any) => {
                 </thead>
                 <tbody>
                     {
-                        props.store.selectedItems.map((item : ISelectedItem) => 
-                        <TableItem 
+                        props.store.selectedItems.map((item : ISelectedItem) =>
+                        <TableItem
                             name={item.itemName}
                             count={item.count}
                             nettoCnt={item.totlNettoVl}
@@ -74,7 +74,7 @@ const CalculationPage: NextPage = (props: any) => {
                     <button onClick={onCalcBtnClick} className={`btn ${styles.btnFooter}`}>Рассчитать</button>
                 </div>
                 {
-                    isShwingCalcBlock ? 
+                    isShwingCalcBlock ?
                     <>
                     <div className={styles.controlsItem}>
                         <table className={styles.controlsTable}>

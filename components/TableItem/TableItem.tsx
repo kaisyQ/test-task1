@@ -15,7 +15,7 @@ interface ITableItemProps {
 
 const TableItem = (props: ITableItemProps) => {
     return  <tr>
-        <td>
+        <td className={styles.whiteBg}>
             <div className={styles.ImageWrapper}>
                 <Image className={styles.furnitureItemImage} src={productImage} />
             </div>
@@ -28,6 +28,6 @@ const TableItem = (props: ITableItemProps) => {
         <td>{props.price} руб.</td>
         <td><div><Image src={xImage}/></div></td>
     </tr>
-} 
+}
 
 export default TableItem

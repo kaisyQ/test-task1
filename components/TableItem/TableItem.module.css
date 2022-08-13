@@ -5,3 +5,7 @@
 .imageWrapper {
     max-height: 97px;
 }
+
+.whiteBg {
+    background-color: #fff;
+}

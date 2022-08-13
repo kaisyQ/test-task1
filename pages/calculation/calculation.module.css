@@ -14,7 +14,7 @@
     width: 100%;
     text-align: center;
     margin: 0;
-    background-color: #fff;
+    background-color: #F8FAFF;
     border-collapse: collapse;
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
@@ -24,17 +24,14 @@
     letter-spacing: -1px;
     color: #606F7A;
 }
+
 .furnitureTable thead {
-    border-bottom: 10px solid #DDEDFF;
+    border-bottom: 10px solid #EFF3F9;
 }
 
 
 .furnitureTable {
     max-height: 600px;
-}
-
-.furnitureTable {
-    border-top: 10px solid #DDEDFF;
 }
 
 .visible {
@@ -45,6 +42,7 @@
 .furnitureTableHeader {
     padding: 33px 0;
 }
+
 .furnitureTable td {
     min-width: 105px;
     max-height: 97px;
@@ -52,8 +50,8 @@
 }
 
 .transparent {
-    border: 1px solid #DDEDFF;
-    background-color: #DDEDFF;
+    border: 1px solid #EFF3F9;
+    background-color: #EFF3F9;
 }
 
 .footer {
@@ -74,6 +72,7 @@
 .btnFooter {
     padding: 19px 50px;
 }
+
 .controlsTable {
     font-family: 'Open Sans';
     font-style: normal;
@@ -82,16 +81,17 @@
     line-height: 23px;
     letter-spacing: 0.2px;
 }
+
 .controlsTable td {
     text-align: right;
     width: 260px;
     display: inline-block;
 }
 
-
 .controlsTable tbody td{
     border-bottom: 28px solid transparent;
-} 
+}
+
 .controlsTable tfoot td{
     border-top: 12px solid transparent;
     font-weight: 600;
